@@ -12,10 +12,11 @@ type
     Button1: TButton;
     procedure Button1Click(Sender: TObject);
   private
-    { Private-Deklarationen }
+    { Private declarations }
+    // Event handler for when a cube in the popup is clicked
     procedure HandleSegmentClick(Sender: TObject; SegmentIndex: Integer; const SegmentText: string);
   public
-    { Public-Deklarationen }
+    { Public declarations }
   end;
 
 var
@@ -27,7 +28,8 @@ implementation
 
 procedure TForm9.HandleSegmentClick(Sender: TObject; SegmentIndex: Integer; const SegmentText: string);
 begin
-  Showmessage('clicked - ' + inttostr(SegmentIndex));
+  // Display which segment was clicked
+  ShowMessage('Clicked - Index: ' + IntToStr(SegmentIndex) + ', Text: ' + SegmentText);
 end;
 
 procedure TForm9.Button1Click(Sender: TObject);
@@ -35,6 +37,7 @@ var
   Popup: TSkiaCubesPopup;
   Items: array of string;
 begin
+  // Define the 6 items for the 3x2 grid
   SetLength(Items, 6);
   Items[0] := '10%';
   Items[1] := '30%';
@@ -44,19 +47,18 @@ begin
   Items[5] := '100%';
 
   Popup := TSkiaCubesPopup.Create(nil);
-  Popup.ShowSkiaCubesPopup(Mouse.CursorPos.X,    // X
-    Mouse.CursorPos.Y,    // Y
-    20,                   // InnerRadius
-    60,                   // OuterRadius
-    clGray,              // SegmentColor
+  Popup.ShowSkiaCubesPopup(Mouse.CursorPos.X,    // Start X
+    Mouse.CursorPos.Y,    // Start Y
+    20,                   // InnerRadius (Ignored in cube mode)
+    60,                   // OuterRadius (Mapped to CubeSize in pixels)
+    clGray,               // SegmentColor
     clLime,               // HoverColor
-    TColor($00333300),    // BorderColor
-    clAqua,               // TextColor - not ... :D not works atm
+    TColor($00333300),    // BorderColor (Unused currently)
+    clAqua,               // TextColor (Unused currently, hardcoded to white internally)
     6,                    // SegmentCount
-    Items,                // SegmentText
-    HandleSegmentClick);  // OnClick
-
-
+    Items,                // SegmentText array
+    HandleSegmentClick    // OnClick Event
+  );
 end;
 
 end.
