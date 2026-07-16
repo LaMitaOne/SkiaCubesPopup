@@ -6,7 +6,7 @@ What it does
 Instead of the classic circular pie-menu, this draws a small 3x2 grid of "cubes"     
 Just an idea i got while playing around with circlepopup transparency problems...this we dont get here.   
 
-Atm not really fully working and far from usabel but maybe not so bad idea... must think more about it :D    
+Atm not really fully working and far from finished but maybe not so bad idea... must think more about it :D    
 could be usable somehow maybe   
    
 
