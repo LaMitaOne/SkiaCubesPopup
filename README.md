@@ -1,5 +1,5 @@
 # SkiaCubesPopup
-A floating, 3D-cube grid popup menu for Delphi VCL, rendered entirely via Skia4Delphi.     
+A floating, Cube grid popup menu for Delphi VCL, rendered entirely via Skia4Delphi.     
    
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/LaMitaOne/SkiaCubesPopup)
 
