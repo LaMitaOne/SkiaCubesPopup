@@ -5,7 +5,7 @@ A floating, Cube grid popup menu for Delphi VCL, rendered entirely via Skia4Delp
 
 <img width="532" height="299" alt="Unbenannt" src="https://github.com/user-attachments/assets/936ee5c5-caeb-44ea-8a14-4bd507eab73b" />   
               
-Bypasses standard VCL limitations by using the Windows UpdateLayeredWindow API combined with Skia to deliver a smooth, anti-aliased grid menu with true per-pixel alpha transparency and soft drop shadows. No clFuchsia masking, no jagged edges, no flickering. Uses natively passed TAlphaColor for flawless color rendering.    
+Bypasses standard VCL limitations by using the Windows UpdateLayeredWindow API combined with Skia to deliver a smooth, anti-aliased grid menu with true per-pixel alpha transparency and soft drop shadows. No clFuchsia masking, no jagged edges, no flickering.     
     
 Features    
     
