@@ -24,7 +24,7 @@ Requirements
   Latest Changes   
     
    v 0.4:   
-   - Per-Segment color tracking! Each cube fades individually between states.   
+   - Per-Segment color hot tracking! Each cube fades individually between states.   
    - Smooth Alpha Fade-In and Fade-Out (Show/Close).   
    - Renamed Inner/OuterRadius conceptually to Gap/CubeSize (Interface remains compatible).    
        
