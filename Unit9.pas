@@ -1,12 +1,10 @@
 unit Unit9;
 
 interface
-
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.UITypes,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.StdCtrls, SkiaCubesPopup;
-
 type
   TForm9 = class(TForm)
     Button1: TButton;
@@ -16,18 +14,14 @@ type
   public
     { Public declarations }
   end;
-
 var
   Form9: TForm9;
-
 implementation
 {$R *.dfm}
-
 procedure TForm9.HandleSegmentClick(Sender: TObject; SegmentIndex: Integer; const SegmentText: string);
 begin
   ShowMessage('Clicked - Index: ' + IntToStr(SegmentIndex) + ', Text: ' + SegmentText);
 end;
-
 procedure TForm9.Button1Click(Sender: TObject);
 var
   Popup: TSkiaCubesPopup;
@@ -41,13 +35,12 @@ begin
   Items[3] := '70%';
   Items[4] := '90%';
   Items[5] := '100%';
-
   Popup := TSkiaCubesPopup.Create(nil);
   Popup.ShowSkiaCubesPopup(
     Mouse.CursorPos.X,      // Start X
     Mouse.CursorPos.Y,      // Start Y
-    20,                     // InnerRadius (Ignored)
-    80,                     // OuterRadius (CubeSize)
+    12,                     // Gap
+    60,                     // CubeSize
     TAlphaColors.Darkslategray, // SegmentColor
     TAlphaColors.Crimson,       // HoverColor
     TAlphaColors.Black,         // BorderColor
@@ -57,5 +50,4 @@ begin
     HandleSegmentClick      // OnClick
   );
 end;
-
 end.
