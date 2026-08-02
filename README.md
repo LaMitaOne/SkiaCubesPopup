@@ -2,9 +2,9 @@
 A floating, Cube grid popup menu for Delphi VCL, rendered entirely via Skia4Delphi.     
    
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/LaMitaOne/SkiaCubesPopup)
-
-<img width="532" height="299" alt="Unbenannt" src="https://github.com/user-attachments/assets/936ee5c5-caeb-44ea-8a14-4bd507eab73b" />   
-              
+   
+<img width="365" height="235" alt="Unbenannt" src="https://github.com/user-attachments/assets/e343ae60-d778-41ff-a20d-dd8dec324b7b" />
+   
 Bypasses standard VCL limitations by using the Windows UpdateLayeredWindow API combined with Skia to deliver a smooth, anti-aliased grid menu with true per-pixel alpha transparency and soft drop shadows. No clFuchsia masking, no jagged edges, no flickering.     
     
 Features    
@@ -21,7 +21,13 @@ Requirements
     Skia4Delphi must be installed.    
       
 
-  Latest Changes     
+  Latest Changes   
+    
+   v 0.4:   
+   - Per-Segment color tracking! Each cube fades individually between states.   
+   - Smooth Alpha Fade-In and Fade-Out (Show/Close).   
+   - Renamed Inner/OuterRadius conceptually to Gap/CubeSize (Interface remains compatible).    
+       
    v 0.3:     
    - Ported the CirclePopup WinAPI UpdateLayeredWindow pipeline to Cubes    
    - Using TAlphaColor natively to prevent color type crashes    
