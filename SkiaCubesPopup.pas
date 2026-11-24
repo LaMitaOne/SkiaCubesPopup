@@ -3,12 +3,14 @@
 ********************************************************************************
   A floating cube grid popup menu rendered via Skia4Delphi.
 *******************************************************************************}
-{ Skia-CubesPopup; v0.4                                                        }
+{ Skia-CubesPopup; v0.5                                                        }
 { by Lara Miriam Tamy Reschke                                                  }
 {                                                                              }
 {------------------------------------------------------------------------------}
 {
   Latest Changes:
+   v 0.4:
+   -  No more png convert neeeded
    v 0.4:
    - Per-Segment color tracking! Each cube fades individually between states.
    - Smooth Alpha Fade-In and Fade-Out (Show/Close).
@@ -21,7 +23,7 @@ interface
 uses
   Winapi.Windows, System.SysUtils, System.Classes, System.Types, System.UITypes,
   System.Math, System.IOUtils, Vcl.Forms, Vcl.Graphics, Vcl.Controls,
-  Vcl.ExtCtrls, Vcl.Imaging.pngimage, Vcl.Imaging.jpeg, Vcl.Skia, Skia, Skia.API;
+  Vcl.ExtCtrls, Vcl.Imaging.jpeg, Vcl.Skia, Skia, Skia.API;
 
 type
   TSkiaCubesPopupClickEvent = procedure(Sender: TObject; SegmentIndex: Integer; const SegmentText: string) of object;
@@ -67,7 +69,6 @@ type
   end;
 
 implementation
-
 { TSkiaCubesPopup }
 
 constructor TSkiaCubesPopup.Create(AOwner: TComponent);
@@ -358,7 +359,6 @@ var
   SkImgInfo: TSkImageInfo;
   SkImage: ISkImage;
   MemStream: TMemoryStream;
-  PngImage: TPngImage;
   I: Integer;
   CubeSize, Gap: Single;
   Col, Row: Integer;
@@ -370,7 +370,8 @@ var
   CubePath: ISkPath;
   R: Single;
 begin
-  SkImgInfo := TSkImageInfo.Create(FBuffer.Width, FBuffer.Height);
+  SkImgInfo := TSkImageInfo.Create(FBuffer.Width, FBuffer.Height, TSkColorType.BGRA8888, TSkAlphaType.Premul);
+
   Surface := TSkSurface.MakeRaster(SkImgInfo);
   if Assigned(Surface) then
   begin
@@ -458,36 +459,13 @@ begin
       end;
     end;
 
-    SkImage := Surface.MakeImageSnapshot;
-    if Assigned(SkImage) then
-    begin
-      MemStream := TMemoryStream.Create;
-      try
-        if SkImage.EncodeToStream(MemStream, TSkEncodedImageFormat.PNG) then
-        begin
-          if MemStream.Size > 0 then
-          begin
-            MemStream.Position := 0;
-            PngImage := TPngImage.Create;
-            try
-              PngImage.LoadFromStream(MemStream);
-              FBuffer.Canvas.Lock;
-              try
-                FBuffer.Canvas.Brush.Color := clBlack;
-                FBuffer.Canvas.FillRect(FBuffer.Canvas.ClipRect);
-                FBuffer.Canvas.Draw(0, 0, PngImage);
-              finally
-                FBuffer.Canvas.Unlock;
-              end;
-            finally
-              PngImage.Free;
-            end;
-          end;
-        end;
-      finally
-        MemStream.Free;
-      end;
-    end;
+SkImage := Surface.MakeImageSnapshot;
+if Assigned(SkImage) then
+begin
+  FBuffer.Free;
+  FBuffer := SkImageToBitmap(SkImage);
+end;
+
   end;
 end;
 
