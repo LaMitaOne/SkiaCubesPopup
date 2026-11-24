@@ -9,7 +9,7 @@
 {------------------------------------------------------------------------------}
 {
   Latest Changes:
-   v 0.4:
+   v 0.5:
    -  No more png convert neeeded
    v 0.4:
    - Per-Segment color tracking! Each cube fades individually between states.
