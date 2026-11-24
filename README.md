@@ -25,6 +25,9 @@ Requirements
 
   Latest Changes   
     
+   v 0.5:      
+   -  No more png convert neeeded     
+      
    v 0.4:   
    - Per-Segment color hot tracking! Each cube fades individually between states.   
    - Smooth Alpha Fade-In and Fade-Out (Show/Close).   
